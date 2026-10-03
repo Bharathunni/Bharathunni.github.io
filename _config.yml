@@ -2,7 +2,7 @@
 # SITE SETTINGS: edit the values in quotes. Nothing else needs touching.
 # ------------------------------------------------------------------
 
-name: "Bharathunni"
+name: "Bharath R Unni"
 credential: "Chartered Accountant"
 
 # Your one-line positioning statement (shown under your name on the home page).
@@ -13,13 +13,13 @@ email: "bharath.r.unni@gmail.com"
 linkedin: "https://www.linkedin.com/in/bharathunni"
 
 # Short description used by Google and by link previews on LinkedIn/WhatsApp.
-description: "Analytical finance frameworks by Bharathunni, Chartered Accountant."
+description: "Analytical finance frameworks by Bharath R Unni, Chartered Accountant."
 
 # ------------------------------------------------------------------
 # TECHNICAL SETTINGS: no need to change anything below this line.
 # ------------------------------------------------------------------
 
-title: "Bharathunni"
+title: "Bharath R Unni"
 url: "https://bharathunni.github.io"
 baseurl: ""
 future: true
