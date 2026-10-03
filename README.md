@@ -26,7 +26,7 @@ Open **`_config.yml`**, click the pencil icon (Edit), and change the text inside
 | Setting | What it controls |
 |---|---|
 | `name` | Your name, at the top of the home page and in the header |
-| `credential` | The small line above your name ("Chartered Accountant · FP&A") |
+| `credential` | The small line above your name ("Chartered Accountant") |
 | `positioning` | The one-line statement under your name. **Replace the placeholder.** |
 | `email`, `linkedin` | Footer contact links. Set one to `""` to hide it. |
 | `description` | The text Google and LinkedIn show when someone shares your link |
