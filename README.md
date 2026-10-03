@@ -185,4 +185,4 @@ If you buy a domain such as `bharathunni.com`:
 | `assets/css/site.css` | Colours, fonts, spacing (colours are at the top) | Rarely |
 | `assets/js/site.js` | Table scrolling, equation display, fade-ins | No |
 
-**Design reference.** Fonts: Source Serif 4 (body text), IBM Plex Sans (headings), IBM Plex Mono (labels and figures). Colours: background `#0F0F0D`, panels `#171714`, rules `#2A2925`, text `#E8E3D6`, muted text `#9A958A`, amber accent `#D9A441`.
+**Design reference.** Fonts: Fraunces (name and wordmark), Source Serif 4 (body text), IBM Plex Sans (headings), IBM Plex Mono (labels and figures). Colours: background `#0F0F0D`, panels `#171714`, rules `#2A2925`, text `#E8E3D6`, muted text `#9A958A`, amber accent `#D9A441`.
