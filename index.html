@@ -1,0 +1,35 @@
+---
+layout: default
+---
+<section class="intro wrap">
+  <p class="label reveal">{{ site.credential }}</p>
+  <h1 class="intro__name reveal">{{ site.name }}</h1>
+  <p class="intro__line reveal">{{ site.positioning }}</p>
+</section>
+
+<section class="index wrap" id="frameworks" aria-labelledby="frameworks-heading">
+  <div class="index__head reveal">
+    <h2 class="label" id="frameworks-heading">Frameworks</h2>
+    <span class="label muted">{{ site.frameworks.size }} published</span>
+  </div>
+  <ol class="ledger">
+    {% assign items = site.frameworks | sort: "number" | reverse %}
+    {% for item in items %}
+    {% assign words = item.content | number_of_words %}
+    {% assign minutes = words | divided_by: 220 | at_least: 1 %}
+    <li class="ledger__row reveal">
+      <a class="ledger__link" href="{{ item.url | relative_url }}">
+        <span class="ledger__num">{% if item.number < 10 %}0{% endif %}{{ item.number }}</span>
+        <span class="ledger__body">
+          <span class="ledger__title">{{ item.title }}</span>
+          {% if item.summary %}<span class="ledger__summary">{{ item.summary }}</span>{% endif %}
+        </span>
+        <span class="ledger__meta">
+          <time datetime="{{ item.date | date: '%Y-%m-%d' }}">{{ item.date | date: "%b %Y" | upcase }}</time>
+          <span>{{ minutes }} MIN</span>
+        </span>
+      </a>
+    </li>
+    {% endfor %}
+  </ol>
+</section>

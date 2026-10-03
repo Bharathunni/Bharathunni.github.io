@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% if page.title %}{% assign page_title = page.title | append: " · " | append: site.name %}{% else %}{% assign page_title = site.name | append: " · " | append: site.credential %}{% endif %}
+  {% assign page_desc = page.summary | default: site.description | strip_html | strip_newlines %}
+  <title>{{ page_title }}</title>
+  <meta name="description" content="{{ page_desc }}">
+  <meta name="theme-color" content="#0F0F0D">
+  <meta property="og:title" content="{{ page_title }}">
+  <meta property="og:description" content="{{ page_desc }}">
+  <meta property="og:type" content="{% if page.collection == 'frameworks' %}article{% else %}website{% endif %}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230F0F0D'/%3E%3Ctext x='16' y='23' font-family='monospace' font-size='20' font-weight='700' fill='%23D9A441' text-anchor='middle'%3EB%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+  <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+  <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="topbar">
+    <div class="wrap topbar__inner">
+      <a class="wordmark" href="{{ '/' | relative_url }}">{{ site.name | upcase }}</a>
+      <nav class="topnav" aria-label="Primary">
+        <a href="{{ '/#frameworks' | relative_url }}">Frameworks</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    {{ content }}
+  </main>
+
+  <footer class="footer" id="contact">
+    <div class="wrap footer__inner">
+      <div class="footer__name">{{ site.name }}</div>
+      <ul class="footer__links">
+        {% if site.email != "" %}<li><span class="label">Email</span><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>{% endif %}
+        {% if site.linkedin != "" %}<li><span class="label">LinkedIn</span><a href="{{ site.linkedin }}" rel="me">{{ site.linkedin | remove: "https://" | remove: "www." }}</a></li>{% endif %}
+      </ul>
+      <div class="footer__meta label">© {{ site.time | date: "%Y" }} {{ site.name }}</div>
+    </div>
+  </footer>
+
+  <script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
+</body>
+</html>

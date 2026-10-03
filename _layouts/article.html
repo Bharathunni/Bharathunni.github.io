@@ -1,0 +1,26 @@
+---
+layout: default
+---
+{% assign words = content | number_of_words %}
+{% assign minutes = words | divided_by: 220 | at_least: 1 %}
+<article class="article">
+  <header class="article__head wrap reveal">
+    <p class="label article__kicker">
+      <span class="accent">Framework {% if page.number < 10 %}0{% endif %}{{ page.number }}</span>
+      <span class="sep">·</span>
+      <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: "%b %Y" | upcase }}</time>
+      <span class="sep">·</span>
+      <span>{{ minutes }} MIN READ</span>
+    </p>
+    <h1 class="article__title">{{ page.title }}</h1>
+    {% if page.summary %}<p class="article__dek">{{ page.summary }}</p>{% endif %}
+  </header>
+
+  <div class="prose wrap">
+    {{ content }}
+  </div>
+
+  <nav class="article__end wrap" aria-label="Article navigation">
+    <a class="label" href="{{ '/#frameworks' | relative_url }}">← All frameworks</a>
+  </nav>
+</article>
