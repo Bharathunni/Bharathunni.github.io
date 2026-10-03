@@ -1,0 +1,52 @@
+# ------------------------------------------------------------------
+# SITE SETTINGS: edit the values in quotes. Nothing else needs touching.
+# ------------------------------------------------------------------
+
+name: "Bharathunni"
+credential: "Chartered Accountant · FP&A"
+
+# Your one-line positioning statement (shown under your name on the home page).
+positioning: "[Placeholder] Your one-line positioning statement goes here."
+
+# Contact details shown in the footer. Leave a value as "" to hide it.
+email: "you@example.com"
+linkedin: "https://www.linkedin.com/in/your-profile"
+
+# Short description used by Google and by link previews on LinkedIn/WhatsApp.
+description: "Analytical finance frameworks by Bharathunni, Chartered Accountant."
+
+# ------------------------------------------------------------------
+# TECHNICAL SETTINGS: no need to change anything below this line.
+# ------------------------------------------------------------------
+
+title: "Bharathunni"
+url: "https://bharathunni.github.io"
+baseurl: ""
+future: true
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  math_engine: mathjax
+  hard_wrap: false
+  syntax_highlighter_opts:
+    disable: true
+
+collections:
+  frameworks:
+    output: true
+    permalink: /frameworks/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: frameworks
+    values:
+      layout: article
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - templates
