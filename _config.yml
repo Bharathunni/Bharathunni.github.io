@@ -36,11 +36,19 @@ collections:
   frameworks:
     output: true
     permalink: /frameworks/:name/
+  builds:
+    output: true
+    permalink: /builds/:name/
 
 defaults:
   - scope:
       path: ""
       type: frameworks
+    values:
+      layout: article
+  - scope:
+      path: ""
+      type: builds
     values:
       layout: article
 

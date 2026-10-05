@@ -60,6 +60,19 @@ The first article (`01-working-capital-cycle.md`) is placeholder content. Replac
 
 ---
 
+## 3b. Add a new build
+
+Builds work exactly like frameworks, in their own folder.
+
+1. Copy the contents of **`templates/new-build.md`**.
+2. In the **`_builds`** folder, create a file named with the next number and a short name, for example `03-gl-anomaly-detection.md`. It goes live at `bharathunni.github.io/builds/03-gl-anomaly-detection/`.
+3. Edit the lines at the top. They are the same as a framework's, plus one:
+   - `featured: true` also lists the build under **Featured builds** on the home page. Use `featured: false` to show it on the Builds page only.
+4. Put screenshots in **`assets/img/builds/<build-name>/`** (Add file → Upload files) and reference them as shown in the template. Use real screenshots from the app or a test run, not stock images.
+5. Commit. The build appears on the Builds page, newest number first.
+
+---
+
 ## 4. Formatting cheat sheet
 
 Articles are written in **Markdown**, a plain-text format where a few symbols control the layout.
@@ -179,7 +192,12 @@ If you buy a domain such as `bharathunni.com`:
 |---|---|---|
 | `_config.yml` | Your name, positioning line, contact details | Yes |
 | `_frameworks/` | One file per article | Yes |
+| `_builds/` | One file per build | Yes |
+| `builds.html` | The Builds page and its intro text | Rarely |
+| `assets/img/builds/` | Screenshots used on build pages | Yes |
 | `templates/new-framework.md` | Blank starting point for a new article | Copy it, don't edit it |
+| `templates/new-build.md` | Blank starting point for a new build | Copy it, don't edit it |
+| `_includes/ledger.html` | The numbered list used for frameworks and builds | Rarely |
 | `index.html` | Home page layout | Rarely |
 | `_layouts/` | Page layouts shared by every page | Rarely |
 | `assets/css/site.css` | Colours, fonts, spacing (colours are at the top) | Rarely |

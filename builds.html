@@ -1,0 +1,15 @@
+---
+layout: default
+title: "Builds"
+summary: "Working systems, not case studies. Each one solved a real problem in a finance function. Stack and source where I can share it."
+permalink: /builds/
+---
+<header class="article__head wrap reveal">
+  <p class="label article__kicker"><span class="accent">{{ site.builds.size }} shipped</span></p>
+  <h1 class="article__title">Builds</h1>
+  <p class="article__dek">Working systems, not case studies. Each one solved a real problem in a finance function: a shipped bookkeeping app, a filings monitor that runs every morning without anyone touching it. Stack and source where I can share it.</p>
+</header>
+
+<section class="index wrap" aria-label="All builds">
+  {% include ledger.html items=site.builds %}
+</section>
