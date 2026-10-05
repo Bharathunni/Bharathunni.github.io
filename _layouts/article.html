@@ -3,10 +3,11 @@ layout: default
 ---
 {% assign words = content | number_of_words %}
 {% assign minutes = words | divided_by: 220 | at_least: 1 %}
+{% if page.collection == 'builds' %}{% assign kind = "Build" %}{% assign back_url = '/builds/' %}{% assign back_text = "All builds" %}{% else %}{% assign kind = "Framework" %}{% assign back_url = '/#frameworks' %}{% assign back_text = "All frameworks" %}{% endif %}
 <article class="article">
   <header class="article__head wrap reveal">
     <p class="label article__kicker">
-      <span class="accent">Framework {% if page.number < 10 %}0{% endif %}{{ page.number }}</span>
+      <span class="accent">{{ kind }} {% if page.number < 10 %}0{% endif %}{{ page.number }}</span>
       <span class="sep">·</span>
       <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: "%b %Y" | upcase }}</time>
       <span class="sep">·</span>
@@ -21,6 +22,6 @@ layout: default
   </div>
 
   <nav class="article__end wrap" aria-label="Article navigation">
-    <a class="label" href="{{ '/#frameworks' | relative_url }}">← All frameworks</a>
+    <a class="label" href="{{ back_url | relative_url }}">← {{ back_text }}</a>
   </nav>
 </article>

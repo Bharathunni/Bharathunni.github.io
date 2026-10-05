@@ -10,7 +10,7 @@
   <meta name="theme-color" content="#0F0F0D">
   <meta property="og:title" content="{{ page_title }}">
   <meta property="og:description" content="{{ page_desc }}">
-  <meta property="og:type" content="{% if page.collection == 'frameworks' %}article{% else %}website{% endif %}">
+  <meta property="og:type" content="{% if page.collection == 'frameworks' or page.collection == 'builds' %}article{% else %}website{% endif %}">
   <meta property="og:url" content="{{ page.url | absolute_url }}">
   <link rel="canonical" href="{{ page.url | absolute_url }}">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230F0F0D'/%3E%3Ctext x='16' y='23' font-family='monospace' font-size='20' font-weight='700' fill='%23D9A441' text-anchor='middle'%3EB%3C/text%3E%3C/svg%3E">
@@ -27,6 +27,7 @@
       <a class="wordmark" href="{{ '/' | relative_url }}" aria-label="{{ site.name }}, home"><span class="wordmark__mono" aria-hidden="true">{{ site.name | slice: 0 }}</span><span class="wordmark__name">{{ site.name }}</span></a>
       <nav class="topnav" aria-label="Primary">
         <a href="{{ '/#frameworks' | relative_url }}">Frameworks</a>
+        <a href="{{ '/builds/' | relative_url }}">Builds</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
