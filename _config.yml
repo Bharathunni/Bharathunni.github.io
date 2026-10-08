@@ -34,7 +34,7 @@ location: "India"
 timezone: "Asia/Kolkata"
 
 # Optional photo for the round avatar, e.g. "/assets/img/me.jpg". Leave "" to show your initial.
-avatar: ""
+avatar: "/assets/img/me.jpg"
 
 # Contact details shown on the home page and in the footer. Leave a value as "" to hide it.
 email: "bharath.r.unni@gmail.com"
