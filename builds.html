@@ -4,12 +4,14 @@ title: "Builds"
 summary: "Working systems, not case studies. Each one solved a real problem in a finance function. Stack and source where I can share it."
 permalink: /builds/
 ---
-<header class="article__head wrap reveal">
-  <p class="label article__kicker"><span class="accent">{{ site.builds.size }} shipped</span></p>
-  <h1 class="article__title">Builds</h1>
-  <p class="article__dek">Working systems, not case studies. Each one solved a real problem in a finance function: a shipped bookkeeping app, a filings monitor that runs every morning without anyone touching it. Stack and source where I can share it.</p>
+<header class="rail line-b panel page-head">
+  <p class="kicker mono"><span class="accent">{{ site.builds.size }} shipped</span></p>
+  <h1 class="page-head__title">Builds</h1>
+  <p class="page-head__dek">Working systems, not case studies. Each one solved a real problem in a finance function: a shipped bookkeeping app, a filings monitor that runs every morning without anyone touching it. Stack and source where I can share it.</p>
 </header>
 
-<section class="index wrap" aria-label="All builds">
-  {% include ledger.html items=site.builds %}
+<div class="rail separator stripes" aria-hidden="true"></div>
+
+<section class="rail line-b panel" aria-label="All builds">
+  {% include cards.html items=site.builds %}
 </section>

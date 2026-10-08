@@ -8,9 +8,38 @@ credential: "Chartered Accountant"
 # Your one-line positioning statement (shown under your name on the home page).
 positioning: "AI in Finance | Assurance | FP&A"
 
-# Contact details shown in the footer. Leave a value as "" to hide it.
+# Lines that rotate under your name on the home page, one every few seconds.
+taglines:
+  - "Chartered Accountant"
+  - "AI in Finance"
+  - "Assurance"
+  - "FP&A"
+  - "I build the tools finance teams wish they had"
+
+# The short "About" paragraph on the home page.
+about: "Chartered Accountant working where assurance, FP&A and AI meet. I write frameworks that put a cash number on operating decisions, and I ship working systems that take the manual grind out of a finance function."
+
+# Tools that appear in your builds. Shown as chips under "About".
+stack:
+  - "Python"
+  - "React"
+  - "Vite"
+  - "Capacitor"
+  - "GitHub Actions"
+  - "Google Sheets"
+  - "pytest"
+
+# Overview details on the home page. Leave a value as "" to hide it.
+location: "India"
+timezone: "Asia/Kolkata"
+
+# Optional photo for the round avatar, e.g. "/assets/img/me.jpg". Leave "" to show your initial.
+avatar: "/assets/img/me.jpg"
+
+# Contact details shown on the home page and in the footer. Leave a value as "" to hide it.
 email: "bharath.r.unni@gmail.com"
 linkedin: "https://www.linkedin.com/in/bharathunni"
+github: "https://github.com/bharathunni"
 
 # Short description used by Google and by link previews on LinkedIn/WhatsApp.
 description: "Analytical finance frameworks by Bharath R Unni, Chartered Accountant."

@@ -2,52 +2,129 @@
 <html lang="en" class="no-js">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   {% if page.title %}{% assign page_title = page.title | append: " · " | append: site.name %}{% else %}{% assign page_title = site.name | append: " · " | append: site.credential %}{% endif %}
   {% assign page_desc = page.summary | default: site.description | strip_html | strip_newlines %}
   <title>{{ page_title }}</title>
   <meta name="description" content="{{ page_desc }}">
-  <meta name="theme-color" content="#0F0F0D">
+  <meta name="theme-color" content="#FBFAF6" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0F0F0D" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
   <meta property="og:title" content="{{ page_title }}">
   <meta property="og:description" content="{{ page_desc }}">
   <meta property="og:type" content="{% if page.collection == 'frameworks' or page.collection == 'builds' %}article{% else %}website{% endif %}">
   <meta property="og:url" content="{{ page.url | absolute_url }}">
+  {% if page.image %}<meta property="og:image" content="{{ page.image | absolute_url }}">{% endif %}
   <link rel="canonical" href="{{ page.url | absolute_url }}">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230F0F0D'/%3E%3Ctext x='16' y='23' font-family='monospace' font-size='20' font-weight='700' fill='%23D9A441' text-anchor='middle'%3EB%3C/text%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='16' fill='%230F0F0D'/%3E%3Ctext x='16' y='22.5' font-family='Georgia,serif' font-style='italic' font-size='19' fill='%23D9A441' text-anchor='middle'%3EB%3C/text%3E%3C/svg%3E">
+  <script>
+    /* Set the theme before first paint so there is no flash. */
+    (function () {
+      var d = document.documentElement, t = null;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      d.setAttribute('data-theme', t);
+      d.className = d.className.replace('no-js', 'js');
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Geist+Mono:wght@400;500&family=Geist:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
-  <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
-  <header class="topbar">
-    <div class="wrap topbar__inner">
-      <a class="wordmark" href="{{ '/' | relative_url }}" aria-label="{{ site.name }}, home"><span class="wordmark__mono" aria-hidden="true">{{ site.name | slice: 0 }}</span><span class="wordmark__name">{{ site.name }}</span></a>
-      <nav class="topnav" aria-label="Primary">
-        <a href="{{ '/#frameworks' | relative_url }}">Frameworks</a>
-        <a href="{{ '/builds/' | relative_url }}">Builds</a>
-        <a href="#contact">Contact</a>
+
+  <header class="site-header">
+    <div class="rail line-b site-header__inner">
+      <a class="brand" href="{{ '/' | relative_url }}" aria-label="{{ site.name }}, home">
+        <span class="brand__mark" aria-hidden="true">{{ site.name | slice: 0 }}</span>
+        <span class="brand__name">{{ site.name }}</span>
+      </a>
+      <span class="spacer"></span>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="{{ '/#frameworks' | relative_url }}"{% if page.collection == 'frameworks' %} aria-current="page"{% endif %}>Frameworks</a>
+        <a href="{{ '/builds/' | relative_url }}"{% if page.url == '/builds/' or page.collection == 'builds' %} aria-current="page"{% endif %}>Builds</a>
       </nav>
+      <span class="vsep" aria-hidden="true"></span>
+      <button class="search-trigger" type="button" data-cmdk-open aria-label="Search (Ctrl K)">
+        {% include icon.html name="search" %}
+        <span class="search-trigger__text">Search</span>
+        <kbd class="search-trigger__kbd"><span data-mod>Ctrl</span>K</kbd>
+      </button>
+      <span class="vsep" aria-hidden="true"></span>
+      <button class="icon-btn theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme (D)">
+        {% include icon.html name="sun" class="icon--sun" %}
+        {% include icon.html name="moon" class="icon--moon" %}
+      </button>
     </div>
   </header>
 
-  <main id="main">
+  <main id="main" class="site-main">
     {{ content }}
   </main>
 
-  <footer class="footer" id="contact">
-    <div class="wrap footer__inner">
-      <div class="footer__name">{{ site.name }}</div>
-      <ul class="footer__links">
-        {% if site.email != "" %}<li><span class="label">Email</span><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>{% endif %}
-        {% if site.linkedin != "" %}<li><span class="label">LinkedIn</span><a href="{{ site.linkedin }}" rel="me">{{ site.linkedin | remove: "https://" | remove: "www." }}</a></li>{% endif %}
+  <footer class="site-footer" id="contact">
+    <div class="rail separator stripes" aria-hidden="true"></div>
+    <div class="rail line-b site-footer__inner">
+      <p class="site-footer__line">
+        Built by <a href="{{ '/' | relative_url }}">{{ site.name }}</a>.
+        {% if site.github != "" %}Source on <a href="https://github.com/bharathunni/bharathunni.github.io" rel="noopener">GitHub</a>.{% endif %}
+      </p>
+      <ul class="site-footer__links">
+        {% if site.email != "" %}<li><a class="icon-btn" href="mailto:{{ site.email }}" aria-label="Email">{% include icon.html name="mail" %}</a></li>{% endif %}
+        {% if site.linkedin != "" %}<li><a class="icon-btn" href="{{ site.linkedin }}" rel="me noopener" aria-label="LinkedIn">{% include icon.html name="linkedin" %}</a></li>{% endif %}
+        {% if site.github != "" %}<li><a class="icon-btn" href="{{ site.github }}" rel="me noopener" aria-label="GitHub">{% include icon.html name="github" %}</a></li>{% endif %}
       </ul>
-      <div class="footer__meta label">© {{ site.time | date: "%Y" }} {{ site.name }}</div>
+    </div>
+    <div class="rail site-footer__meta">
+      <span class="mono">© {{ site.time | date: "%Y" }} {{ site.name }}</span>
+      <span class="mono balance" title="Every page on this site is double-entry checked.">Dr = Cr <span class="tick-inline" aria-hidden="true">✓</span></span>
     </div>
   </footer>
 
+  <button class="to-top icon-btn" type="button" data-to-top aria-label="Back to top">{% include icon.html name="arrow-up" %}</button>
+  <div class="toast" role="status" aria-live="polite" data-toast></div>
+
+  <div class="cmdk" data-cmdk hidden>
+    <div class="cmdk__backdrop" data-cmdk-close></div>
+    <div class="cmdk__panel" role="dialog" aria-modal="true" aria-label="Search">
+      <div class="cmdk__search">
+        {% include icon.html name="search" %}
+        <input class="cmdk__input" type="text" placeholder="Search frameworks, builds, links…" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="true" aria-controls="cmdk-list" aria-autocomplete="list" data-cmdk-input>
+        <kbd class="cmdk__esc">Esc</kbd>
+      </div>
+      <ul class="cmdk__list" id="cmdk-list" role="listbox" data-cmdk-list></ul>
+      <div class="cmdk__foot mono"><span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>↵</kbd> open</span></div>
+    </div>
+  </div>
+
+  {% assign sorted_builds = site.builds | sort: "number" | reverse %}
+  {% assign sorted_frameworks = site.frameworks | sort: "number" | reverse %}
+  <script type="application/json" id="cmdk-data">
+    [
+      { "group": "Pages", "title": "Home", "url": {{ '/' | relative_url | jsonify }}, "icon": "home" },
+      { "group": "Pages", "title": "Builds", "url": {{ '/builds/' | relative_url | jsonify }}, "icon": "box" },
+      { "group": "Pages", "title": "Frameworks", "url": {{ '/#frameworks' | relative_url | jsonify }}, "icon": "file" }
+      {% for b in sorted_builds %},{ "group": "Builds", "title": {{ b.title | jsonify }}, "hint": {{ b.summary | strip_html | truncate: 90 | jsonify }}, "url": {{ b.url | relative_url | jsonify }}, "icon": "box" }{% endfor %}
+      {% for f in sorted_frameworks %},{ "group": "Frameworks", "title": {{ f.title | jsonify }}, "hint": {{ f.summary | strip_html | truncate: 90 | jsonify }}, "url": {{ f.url | relative_url | jsonify }}, "icon": "file" }{% endfor %}
+      {% if site.linkedin != "" %},{ "group": "Links", "title": "LinkedIn", "url": {{ site.linkedin | jsonify }}, "icon": "linkedin", "external": true }{% endif %}
+      {% if site.github != "" %},{ "group": "Links", "title": "GitHub", "url": {{ site.github | jsonify }}, "icon": "github", "external": true }{% endif %}
+      {% if site.email != "" %},{ "group": "Links", "title": "Copy email address", "hint": {{ site.email | jsonify }}, "action": "copy-email", "icon": "copy" }{% endif %}
+      ,{ "group": "Theme", "title": "Toggle light / dark", "action": "theme", "icon": "contrast" }
+    ]
+  </script>
+  <template id="cmdk-icons">
+    <span data-icon="home">{% include icon.html name="home" %}</span>
+    <span data-icon="box">{% include icon.html name="box" %}</span>
+    <span data-icon="file">{% include icon.html name="file" %}</span>
+    <span data-icon="linkedin">{% include icon.html name="linkedin" %}</span>
+    <span data-icon="github">{% include icon.html name="github" %}</span>
+    <span data-icon="copy">{% include icon.html name="copy" %}</span>
+    <span data-icon="contrast">{% include icon.html name="contrast" %}</span>
+  </template>
+
+  <script>window.SITE = { email: {{ site.email | jsonify }}, timezone: {{ site.timezone | default: "Asia/Kolkata" | jsonify }} };</script>
   <script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
 </body>
 </html>

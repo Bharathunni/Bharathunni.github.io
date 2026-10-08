@@ -5,23 +5,41 @@ layout: default
 {% assign minutes = words | divided_by: 220 | at_least: 1 %}
 {% if page.collection == 'builds' %}{% assign kind = "Build" %}{% assign back_url = '/builds/' %}{% assign back_text = "All builds" %}{% else %}{% assign kind = "Framework" %}{% assign back_url = '/#frameworks' %}{% assign back_text = "All frameworks" %}{% endif %}
 <article class="article">
-  <header class="article__head wrap reveal">
-    <p class="label article__kicker">
-      <span class="accent">{{ kind }} {% if page.number < 10 %}0{% endif %}{{ page.number }}</span>
-      <span class="sep">·</span>
-      <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: "%b %Y" | upcase }}</time>
-      <span class="sep">·</span>
-      <span>{{ minutes }} MIN READ</span>
-    </p>
-    <h1 class="article__title">{{ page.title }}</h1>
-    {% if page.summary %}<p class="article__dek">{{ page.summary }}</p>{% endif %}
-  </header>
-
-  <div class="prose wrap">
-    {{ content }}
+  <div class="rail line-b article__bar">
+    <a class="btn btn--ghost" href="{{ back_url | relative_url }}">{% include icon.html name="arrow-left" %} {{ back_text }}</a>
+    <span class="article__progress mono" aria-hidden="true"><span data-progress>0</span>%</span>
   </div>
 
-  <nav class="article__end wrap" aria-label="Article navigation">
-    <a class="label" href="{{ back_url | relative_url }}">← {{ back_text }}</a>
+  <header class="rail line-b panel page-head">
+    <p class="kicker mono">
+      <span class="accent">{{ kind }} {% if page.number < 10 %}0{% endif %}{{ page.number }}</span>
+      <span class="dot" aria-hidden="true"></span>
+      <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: "%d %b %Y" }}</time>
+      <span class="dot" aria-hidden="true"></span>
+      <span>{{ minutes }} min read</span>
+    </p>
+    <h1 class="page-head__title">{{ page.title }}</h1>
+    {% if page.summary %}<p class="page-head__dek">{{ page.summary }}</p>{% endif %}
+  </header>
+
+  <div class="rail separator stripes" aria-hidden="true"></div>
+
+  <div class="rail line-b panel">
+    <div class="prose" data-prose>
+      {{ content }}
+    </div>
+  </div>
+
+  <div class="rail separator stripes" aria-hidden="true"></div>
+
+  <nav class="rail line-b panel pager" aria-label="More {{ kind | downcase }}s">
+    {% if page.previous %}
+    <a class="pager__link" href="{{ page.previous.url | relative_url }}"><span class="mono muted">{% include icon.html name="arrow-left" %} Previous</span><span class="pager__title">{{ page.previous.title }}</span></a>
+    {% else %}<span></span>{% endif %}
+    {% if page.next %}
+    <a class="pager__link pager__link--next" href="{{ page.next.url | relative_url }}"><span class="mono muted">Next {% include icon.html name="arrow-right" %}</span><span class="pager__title">{{ page.next.title }}</span></a>
+    {% else %}
+    <a class="pager__link pager__link--next" href="{{ back_url | relative_url }}"><span class="mono muted">Back {% include icon.html name="arrow-right" %}</span><span class="pager__title">{{ back_text }}</span></a>
+    {% endif %}
   </nav>
 </article>

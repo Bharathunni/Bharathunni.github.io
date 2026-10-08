@@ -4,6 +4,7 @@ title: "FinBuddy: Double-Entry Bookkeeping, Offline"
 summary: "An offline-first Android bookkeeping app with real double-entry books: vouchers, trial balance, final accounts, an audit trail and a period lock. Bank CSV import catches duplicates on an exact match. Your books never leave the device."
 date: 2026-10-04
 featured: true
+image: "/assets/img/builds/finbuddy/dashboard.png"
 ---
 
 Freelancers, consultants and small firms in India have two bad options. Expense-tracker apps are easy, but they keep single-entry lists that can never produce a balance sheet that ties. Proper accounting software produces real books, but it's built for a desktop and an accountant, and it usually wants your ledgers on someone else's cloud.

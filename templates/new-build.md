@@ -4,6 +4,7 @@ title: "Your build name"
 summary: "One or two sentences: the problem it solves and what it does. Shown under the title, on the Builds page and on the home page if featured."
 date: 2026-11-01
 featured: true
+image: "/assets/img/builds/your-build/screenshot.png"
 ---
 
 Opening paragraph. The problem in a finance function, and why the existing options fell short.

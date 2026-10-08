@@ -1,20 +1,22 @@
 {% comment %}Numbered list of articles, newest number first. Pass items=<collection>.{% endcomment %}
+{% assign sorted = include.items | sort: "number" | reverse %}
 <ol class="ledger">
-  {% assign sorted = include.items | sort: "number" | reverse %}
   {% for item in sorted %}
   {% assign words = item.content | number_of_words %}
   {% assign minutes = words | divided_by: 220 | at_least: 1 %}
   <li class="ledger__row reveal">
     <a class="ledger__link" href="{{ item.url | relative_url }}">
-      <span class="ledger__num">{% if item.number < 10 %}0{% endif %}{{ item.number }}</span>
+      <span class="ledger__num tile mono">{% if item.number < 10 %}0{% endif %}{{ item.number }}</span>
       <span class="ledger__body">
         <span class="ledger__title">{{ item.title }}</span>
         {% if item.summary %}<span class="ledger__summary">{{ item.summary }}</span>{% endif %}
+        <span class="ledger__meta mono">
+          <time datetime="{{ item.date | date: '%Y-%m-%d' }}">{{ item.date | date: "%d %b %Y" }}</time>
+          <span class="dot" aria-hidden="true"></span>
+          <span>{{ minutes }} min read</span>
+        </span>
       </span>
-      <span class="ledger__meta">
-        <time datetime="{{ item.date | date: '%Y-%m-%d' }}">{{ item.date | date: "%b %Y" | upcase }}</time>
-        <span>{{ minutes }} MIN</span>
-      </span>
+      <span class="ledger__arrow" aria-hidden="true">{% include icon.html name="arrow-right" %}</span>
     </a>
   </li>
   {% endfor %}
