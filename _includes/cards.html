@@ -1,0 +1,19 @@
+{% comment %}Grid of build cards with a screenshot, newest number first. Pass items=<builds>.{% endcomment %}
+{% assign sorted = include.items | sort: "number" | reverse %}
+<ul class="cards">
+  {% for item in sorted %}
+  <li class="cards__cell reveal">
+    <a class="card" href="{{ item.url | relative_url }}">
+      <span class="card__media">
+        {% if item.image %}<img src="{{ item.image | relative_url }}" alt="" loading="lazy" decoding="async">{% else %}<span class="card__placeholder stripes"></span>{% endif %}
+        <span class="card__num mono">{% if item.number < 10 %}0{% endif %}{{ item.number }}</span>
+      </span>
+      <span class="card__body">
+        <span class="card__title">{{ item.title }}</span>
+        {% if item.summary %}<span class="card__summary">{{ item.summary }}</span>{% endif %}
+        <span class="card__meta mono"><time datetime="{{ item.date | date: '%Y-%m-%d' }}">{{ item.date | date: "%b %Y" }}</time><span class="card__arrow">{% include icon.html name="arrow-up-right" %}</span></span>
+      </span>
+    </a>
+  </li>
+  {% endfor %}
+</ul>

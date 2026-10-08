@@ -4,6 +4,7 @@ title: "Portfolio Filings Monitor"
 summary: "An unattended service that checks every stock in a portfolio against BSE corporate filings each morning, keeps only the material events, ranks them by severity and emails each user a headline-first digest. No servers, no database, no paid data."
 date: 2026-10-04
 featured: true
+image: "/assets/img/builds/portfolio-filings-monitor/sample-digest.png"
 ---
 
 Anyone holding Indian equities directly has the same blind spot. Exchange filings are where an auditor resignation, a pledge invocation or a default first becomes public, and BSE publishes them in a constant stream. Almost all are routine: trading-window closures, newspaper ads, Reg 74(5) certificates. The few that matter are buried in that noise, and by the time they reach the news the price has often already moved.

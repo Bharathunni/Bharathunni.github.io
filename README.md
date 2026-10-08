@@ -28,7 +28,12 @@ Open **`_config.yml`**, click the pencil icon (Edit), and change the text inside
 | `name` | Your name, at the top of the home page and in the header |
 | `credential` | The small line above your name ("Chartered Accountant") |
 | `positioning` | The one-line statement under your name. **Replace the placeholder.** |
-| `email`, `linkedin` | Footer contact links. Set one to `""` to hide it. |
+| `taglines` | The lines that rotate under your name on the home page |
+| `about` | The paragraph under **About** on the home page |
+| `stack` | The tool chips under **About** |
+| `location`, `timezone` | Shown in the home page overview, with a live clock |
+| `avatar` | Path to a photo for the round avatar. Leave `""` to show your initial. |
+| `email`, `linkedin`, `github` | Contact links. Set one to `""` to hide it. |
 | `description` | The text Google and LinkedIn show when someone shares your link |
 
 Click **Commit changes**. The change is live in a minute or two.
@@ -67,7 +72,8 @@ Builds work exactly like frameworks, in their own folder.
 1. Copy the contents of **`templates/new-build.md`**.
 2. In the **`_builds`** folder, create a file named with the next number and a short name, for example `03-gl-anomaly-detection.md`. It goes live at `bharathunni.github.io/builds/03-gl-anomaly-detection/`.
 3. Edit the lines at the top. They are the same as a framework's, plus one:
-   - `featured: true` also lists the build under **Featured builds** on the home page. Use `featured: false` to show it on the Builds page only.
+   - `featured: true` also lists the build under **Builds** on the home page. Use `featured: false` to show it on the Builds page only.
+   - `image:` the screenshot used on the build's card, e.g. `"/assets/img/builds/<build-name>/screenshot.png"`.
 4. Put screenshots in **`assets/img/builds/<build-name>/`** (Add file → Upload files) and reference them as shown in the template. Use real screenshots from the app or a test run, not stock images.
 5. Commit. The build appears on the Builds page, newest number first.
 
@@ -197,10 +203,12 @@ If you buy a domain such as `bharathunni.com`:
 | `assets/img/builds/` | Screenshots used on build pages | Yes |
 | `templates/new-framework.md` | Blank starting point for a new article | Copy it, don't edit it |
 | `templates/new-build.md` | Blank starting point for a new build | Copy it, don't edit it |
-| `_includes/ledger.html` | The numbered list used for frameworks and builds | Rarely |
+| `_includes/ledger.html` | The numbered list used for frameworks | Rarely |
+| `_includes/cards.html` | The screenshot cards used for builds | Rarely |
+| `_includes/icon.html` | Line icons used across the site | Rarely |
 | `index.html` | Home page layout | Rarely |
 | `_layouts/` | Page layouts shared by every page | Rarely |
 | `assets/css/site.css` | Colours, fonts, spacing (colours are at the top) | Rarely |
-| `assets/js/site.js` | Table scrolling, equation display, fade-ins | No |
+| `assets/js/site.js` | Theme toggle, search (Ctrl/Cmd K), rotating taglines, clock, cover stamps, tables, equations, fade-ins | No |
 
-**Design reference.** Fonts: Fraunces (name, wordmark and headings), Source Serif 4 (body text), IBM Plex Mono (labels and figures). Colours: background `#0F0F0D`, panels `#171714`, rules `#2A2925`, text `#E8E3D6`, muted text `#9A958A`, amber accent `#D9A441`.
+**Design reference.** One centred column with hairlines that run edge to edge and diagonal-stripe separators between sections. Light and dark themes (toggle in the header, or press `D`); search with `Ctrl K` / `Cmd K` or `/`. Fonts: Fraunces (name and headings), Geist (text), Geist Mono (labels and figures), Caveat (handwritten margin notes). Colours are set once at the top of `assets/css/site.css`: light uses ledger-paper `#FBFAF6` with amber `#B07A16`; dark uses `#0F0F0D` with amber `#D9A441`. Layout inspired by [chanhdai.com](https://chanhdai.com) (MIT).
