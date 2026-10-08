@@ -276,11 +276,6 @@ kbd { font-family: var(--font-mono); }
   color: var(--accent-fg);
   padding-right: 0.06em;
 }
-.cover__fig {
-  position: absolute; right: 0.75rem; bottom: 0.6rem; margin: 0;
-  font-size: 0.75rem; letter-spacing: 0.02em;
-  color: color-mix(in oklab, var(--muted-fg) 70%, var(--bg));
-}
 .cover__stamps { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 2; }
 .stamp {
   position: absolute;
