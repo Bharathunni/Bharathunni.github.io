@@ -22,12 +22,15 @@ about: "Chartered Accountant working where assurance, FP&A and AI meet. I write 
 # Tools that appear in your builds. Shown as chips under "About".
 stack:
   - "Python"
+  - "TypeScript"
   - "React"
   - "Vite"
   - "Capacitor"
   - "GitHub Actions"
   - "Google Sheets"
   - "pytest"
+  - "Vitest"
+  - "Cloudflare Pages"
 
 # Overview details on the home page. Leave a value as "" to hide it.
 location: "India"
